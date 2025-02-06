@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✧ Melody's Enchanted Digital Domain v3.0 ✧</title>
+    <style>
+        /* 
+        ------------------------------------------------
+        ✧ Melody's Custom Style Sheet v3.0 ✧
+        Last Updated: 2/6/25
+        Best Viewed in Netscape Navigator
+        ------------------------------------------------
+        */
+
+        :root {
+            --bg-primary: #FFB6C1;
+            --bg-secondary: #E6E6FA;
+            --accent-1: #FF69B4;
+            --accent-2: #DDA0DD;
+            --window-bg: #FFF0F5;
+            --border-light: #FFE4E1;
+            --border-dark: #FF69B4;
+            --text-primary: #800080;
+            --text-secondary: #000080;
+            --crystal-blue: #ADD8E6;
+            --crystal-pink: #FFB7C5;
+            --crystal-purple: #E6E6FA;
+            --star-yellow: #FFD700;
+        }
+
+        /* Base Enchantments */
+        body {
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+            margin: 0;
+            cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABNJREFUeF5jYGBgEGBgYBBgYAAAAowABYgu3XoAAAAASUVORK5CYII=), auto;
+            background-image: 
+                linear-gradient(45deg, var(--bg-primary) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--bg-primary) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--bg-primary) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--bg-primary) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+        }
+
+        /* Win98 Window Frame */
+        .page-container {
+            width: 850px;
+            margin: 20px auto;
+            background: var(--window-bg);
+            border: 3px solid var(--border-dark);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title Bar */
+        .title-bar {
+            background: var(--accent-1);
+            padding: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .title-bar-text {
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .title-bar-controls button {
+            width: 16px;
+            height: 14px;
+            margin-left: 2px;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: 1px outset white;
+            cursor: pointer;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            background: var(--bg-secondary);
+            border-bottom: 2px solid var(--border-dark);
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .toolbar-button {
+            background: var(--window-bg);
+            border: 1px outset white;
+            padding: 2px 8px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        /* Main Layout */
+        .content {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex-grow: 1;
+        }
+
+        /* Profile Section */
+        .profile-box {
+            background: var(--window-bg);
+            border: 2px inset var(--border-light);
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--border-dark);
+            margin: 10px auto;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--accent-2),
+                var(--accent-2) 5px,
+                var(--bg-secondary) 5px,
+                var(--bg-secondary) 10px
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-pic::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.5) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            animation: sparkle 2s linear infinite;
+        }
+
+        /* Stats Display */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 12px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--window-bg),
+                var(--window-bg) 10px,
+                var(--bg-secondary) 10px,
+                var(--bg-secondary) 20px
+            );
+        }
+
+        .stats-table td {
+            padding: 5px;
+            border: 1px solid var(--border-dark);
+        }
+
+        /* Dream Crystals Collection */
+        .crystal-collection {
+            background: var(--window-bg);
+            border: 2px inset var(--border-light);
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .crystal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .crystal {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            border-radius: 4px;
+            animation: crystal-glow 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .crystal:hover {
+            transform: scale(1.1);
+        }
+
+        .crystal-blue { background: var(--crystal-blue); }
+        .crystal-pink { background: var(--crystal-pink); }
+        .crystal-purple { background: var(--crystal-purple); }
+
+        /* Enhanced Virtual Pet */
+        .virtual-pet {
+            background: var(--window-bg);
+            border: 2px inset var(--border-light);
+            padding: 10px;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .pet-sprite {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: var(--accent-2);
+            border: 1px solid var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 1s infinite;
+        }
+
+        .pet-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+            font-size: 11px;
+        }
+
+        .pet-stat {
+            background: var(--bg-secondary);
+            padding: 2px 5px;
+            border: 1px solid var(--border-dark);
+        }
+
+        .pet-actions {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .pet-action {
+            font-size: 20px;
+            background: var(--window-bg);
+            border: 1px outset white;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+
+        /* Spellbook */
+        .spellbook {
+            background: var(--window-bg);
+            border: 2px inset var(--border-light);
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .spell-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .spell-item {
+            background: var(--bg-secondary);
+            margin: 5px 0;
+            padding: 8px;
+            border: 1px solid var(--border-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spell-icon {
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            background: var(--window-bg);
+            border: 2px inset var(--border-light);
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-dark);
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Expanded Sticker Book */
+        .sticker-book {
+            background: var(--window-bg);
+            border: 2px inset var(--border-light);
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .sticker-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .sticker {
+            aspect-ratio: 1;
+            background: var(--bg-secondary);
+            border: 1px dashed var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sticker:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        /* MIDI Player */
+        .midi-player {
+            background: #000000;
+            color: #00FF00;
+            font-family: "Courier New", monospace;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px inset var(--border-light);
+            text-align: center;
+        }
+
+        .midi-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .midi-button {
+            background: var(--window-bg);
+            border: 1px outset white;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animations */
+        @keyframes sparkle {
+            0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+            100% { transform: translateX(50%) translateY(50%) rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes crystal-glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        /* Scroll Bar Styling */
+        ::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-left: 1px solid white;
+            border-right: 1px solid black;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--window-bg);
+            border: 1px outset white;
+        }
+
+        /* Marquee Enhancement */
+        marquee {
+            background: var(--bg-secondary);
+            color: var(--accent-1);
+            padding: 5px;
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="title-bar">
+            <div class="title-bar-text">✧ Melody's Enchanted Digital Domain v3.0 ✧</div>
+            <div class="title-bar-controls">
+                <button>_</button>
+                <button>□</button>
+                <button>×</button>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <button class="toolbar-button">📖 Profile</button>
+            <button class="toolbar-button">✨ Spells</button>
+            <button class="toolbar-button">📸 Gallery</button>
+            <button class="toolbar-button">🎵 Music</button>
+        </div>
+
+        <marquee scrollamount="3" behavior="alternate">
+            ✧･ﾟ: *✧･ﾟ:* Welcome to my magical digital sanctuary! Current Moon Phase: 🌒 Waxing Crescent *:･ﾟ✧*:･ﾟ✧
+        </marquee>
+
+        <div class="content">
+            <aside class="sidebar">
+                <div class="profile-box">
+                    <div class="profile-pic">✦</div>
+                    <h2>⋆｡˚ Melody ⋆｡˚</h2>
+                    <div class="stats-table">
+                        <table>
+                            <tr><td>Class:</td><td>Dream Weaver</td></tr>
+                            <tr><td>Level:</td><td>16</td></tr>
+                            <tr><td>Alignment:</td><td>Starlight</td></tr>
+                            <tr><td>Dream Power:</td><td>87/100</td></tr>
+                            <tr><td>Wishes Granted:</td><td>1,337</td></tr>
+                            <tr><td>Stardust:</td><td>✨✨✨✨☆</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="crystal-collection">
+                    <h3>✧ Dream Crystals ✧</h3>
+                    <div class="crystal-grid">
+                        <div class="crystal crystal-blue">💎</div>
+                        <div class="crystal crystal-pink">💎</div>
+                        <div class="crystal crystal-purple">💎</div>
+                        <div class="crystal crystal-blue">💎</div>
+                        <div class="crystal crystal-pink">💎</div>
+                        <div class="crystal crystal-purple">💎</div>
+                    </div>
+                </div>
+
+                <div class="virtual-pet">
+                    <h3>✧ StarCloud the Dream Fox ✧</h3>
+                    <div class="pet-sprite">🦊</div>
+                    <div class="pet-stats">
+                        <div class="pet-stat">Happiness: 95%</div>
+                        <div class="pet-stat">Magic: 82%</div>
+                        <div class="pet-stat">Energy: 78%</div>
+                        <div class="pet-stat">Dreams: 91%</div>
+                    </div>
+                    <div class="pet-actions">
+                        <button class="pet-action">🌟</button>
+                        <button class="pet-action">🍪</button>
+                        <button class="pet-action">💫</button>
+                        <button class="pet-action">🎮</button>
+                    </div>
+                </div>
+
+                <div class="midi-player">
+                    ♫ Now Playing: dreamy_nights.mid
+                    <div class="midi-controls">
+                        <button class="midi-button">◀</button>
+                        <button class="midi-button">▶</button>
+                        <button class="midi-button">■</button>
+                        <button class="midi-button">▶▶</button>
+                    </div>
+                    <div>🎵 Playlist: Dream Pop Hits 98 🎵</div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="spellbook">
+                    <h3>⋆｡˚ Spellbook Collection ⋆｡˚</h3>
+                    <ul class="spell-list">
+                        <li class="spell-item">
+                            <span class="spell-icon">✨</span>
+                            <div>
+                                <strong>Stardust Sparkle</strong>
+                                <div>Level 5 - Creates trails of magical stardust</div>
+                            </div>
+                        </li>
+                        <li class="spell-item">
+                            <span class="spell-icon">🌙</span>
+                            <div>
+                                <strong>Moonbeam Dance</strong>
+                                <div>Level 3 - Summons gentle moonlight</div>
+                            </div>
+                        </li>
+                        <li class="spell-item">
+                            <span class="spell-icon">🦋</span>
+                            <div>
+                                <strong>Dream Flutter</strong>
+                                <div>Level 4 - Conjures dream butterflies</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="photo-gallery">
+                    <h3>✧ Magical Moments Gallery ✧</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">🌟</div>
+                        <div class="gallery-item">🦊</div>
+                        <div class="gallery-item">🌙</div>
+                        <div class="gallery-item">🦋</div>
+                        <div class="gallery-item">💫</div>
+                        <div class="gallery-item">✨</div>
+                        <div class="gallery-item">🌈</div>
+                        <div class="gallery-item">💎</div>
+                        <div class="gallery-item">🎀</div>
+                    </div>
+                </div>
+
+                <div class="sticker-book">
+                    <h3>⋆｡˚ Sticker Collection ⋆｡˚</h3>
+                    <div class="sticker-grid">
+                        <div class="sticker">🌟</div>
+                        <div class="sticker">🎀</div>
+                        <div class="sticker">🦋</div>
+                        <div class="sticker">💫</div>
+                        <div class="sticker">🌙</div>
+                        <div class="sticker">✨</div>
+                        <div class="sticker">🌈</div>
+                        <div class="sticker">💝</div>
+                        <div class="sticker">🎮</div>
+                        <div class="sticker">🎪</div>
+                        <div class="sticker">🎠</div>
+                        <div class="sticker">🎡</div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
